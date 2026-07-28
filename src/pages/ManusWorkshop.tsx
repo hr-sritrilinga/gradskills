@@ -137,12 +137,14 @@ export default function ManusWorkshop() {
         
         setIsSubmitting(true);
         try {
+            // Use relative path in production since frontend and backend are on the same domain
+            const apiUrl = import.meta.env.DEV ? "http://localhost:4000" : "";
+            
             const res = await loadRazorpay();
             if (!res) throw new Error("Razorpay SDK failed to load. Are you online?");
             
             const { id: toastId } = toast({ title: "Opening Payment…" });
             
-            const apiUrl = import.meta.env.VITE_BUILDATHON_API || "http://localhost:4000";
             const orderRes = await fetch(`${apiUrl}/api/create-razorpay-order`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
