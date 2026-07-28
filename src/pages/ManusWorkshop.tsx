@@ -342,7 +342,7 @@ export default function ManusWorkshop() {
                                         <div className="text-center mb-10">
                                             <div className="flex items-baseline justify-center gap-2.5 mb-2">
                                                 <span className="text-[28px] font-normal line-through text-black/30">₹299</span>
-                                                <span className="text-[48px] font-bold text-black leading-none tracking-tight">₹99</span>
+                                                <span className="text-[48px] font-bold text-home-gradient leading-none tracking-tight">₹99</span>
                                             </div>
                                             <p className="text-[12px] text-black/40 font-medium tracking-wide">Early-bird pricing · limited seats</p>
                                         </div>
@@ -575,7 +575,7 @@ export default function ManusWorkshop() {
                         </p>
                         <div className="flex items-baseline justify-center gap-2.5 mb-10">
                             <span className="text-[20px] font-normal line-through text-white/15">₹299</span>
-                            <span className="text-[42px] font-bold text-white leading-none tracking-tight">₹99</span>
+                            <span className="text-[42px] font-bold text-home-gradient leading-none tracking-tight">₹99</span>
                         </div>
                         <button onClick={scrollToForm} className="bg-home-gradient text-white px-10 py-4 rounded-xl font-semibold text-[15px] transition-all hover:opacity-90 shadow-[0_0_20px_rgba(255,87,87,0.12)] hover:shadow-[0_0_32px_rgba(140,82,255,0.3)] hover:-translate-y-0.5 inline-flex items-center gap-2">
                             Register Now <ArrowRight className="w-4 h-4" />
