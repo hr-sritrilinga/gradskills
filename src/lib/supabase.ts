@@ -2,8 +2,8 @@ import { createClient } from '@supabase/supabase-js';
 
 // Replace these with your actual Supabase URL and Anon Key
 // Found in: Project Settings -> API
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://bxjjenganmegacussrgr.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4amplbmdhbm1lZ2FjdXNzcmdyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNTYxMzIsImV4cCI6MjA5MzczMjEzMn0.3gWCd50Tt6Ae5iunhGHCk9FTGuWDTrSUBH-exOMvfu0';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://gemzxhbyyuhekysnoizv.supabase.co';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdlbXp4aGJ5eXVoZWt5c25vaXp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwMTExMTcsImV4cCI6MjA5ODU4NzExN30.a8s87A0yOSIOB9fhr3rBoMMd5Ktfh6Jfx2Kdmm9rEsI';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 

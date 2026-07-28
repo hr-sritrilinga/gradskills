@@ -83,7 +83,7 @@ export default function FoundationalProgram() {
                                 className="flex flex-col sm:flex-row w-full sm:w-auto gap-4"
                             >
                                 <ApplicationFormModal>
-                                    <button className="w-full sm:w-auto bg-purple-600 text-white px-8 py-4 min-h-[56px] rounded-xl font-bold text-[16px] transition-all shadow-md hover:bg-purple-700 hover:shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2">
+                                    <button className="w-full sm:w-auto bg-purple-600 text-white px-8 py-4 min-h-[56px] rounded-2xl font-semibold text-[16px] transition-all shadow-md hover:bg-purple-700 hover:shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2">
                                         Start Building <ArrowRight className="w-5 h-5" />
                                     </button>
                                 </ApplicationFormModal>

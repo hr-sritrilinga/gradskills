@@ -238,7 +238,7 @@ export default function ApplyGradteer() {
 
                                 <button 
                                     disabled={isSubmitting}
-                                    className="w-full bg-home-gradient text-white py-5 rounded-2xl font-black text-[18px] tracking-tight flex items-center justify-center gap-3 transition-all hover:shadow-[0_0_30px_rgba(255,87,87,0.4)] disabled:opacity-50 disabled:cursor-not-allowed group"
+                                    className="w-full bg-home-gradient text-white py-5 rounded-2xl font-semibold text-[18px] tracking-tight flex items-center justify-center gap-3 transition-all hover:shadow-[0_0_30px_rgba(255,87,87,0.4)] disabled:opacity-50 disabled:cursor-not-allowed group"
                                 >
                                     {isSubmitting ? "Submitting..." : "Apply as GradTeer"}
                                     <Send className={`w-5 h-5 transition-transform ${!isSubmitting && "group-hover:translate-x-1 group-hover:-translate-y-1"}`} />

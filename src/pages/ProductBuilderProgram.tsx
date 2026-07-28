@@ -81,7 +81,7 @@ export default function ProductBuilderProgram() {
                                 className="flex flex-col sm:flex-row w-full sm:w-auto gap-4"
                             >
                                 <ApplicationFormModal>
-                                    <button className="w-full sm:w-auto bg-[#2563EB] text-white px-8 py-4 min-h-[56px] rounded-xl font-bold text-[16px] transition-all shadow-md hover:bg-[#1E40AF] hover:shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2">
+                                    <button className="w-full sm:w-auto bg-[#2563EB] text-white px-8 py-4 min-h-[56px] rounded-2xl font-semibold text-[16px] transition-all shadow-md hover:bg-[#1E40AF] hover:shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2">
                                         Become an AI Powered Product Builder <ArrowRight className="w-5 h-5" />
                                     </button>
                                 </ApplicationFormModal>

@@ -183,7 +183,7 @@ export default function BridgeSection({ theme = "dark" }: { theme?: "dark" | "li
                         </div>
                     </div>
                     <ApplicationFormModal>
-                        <button className="shrink-0 px-10 py-5 bg-home-gradient text-white rounded-xl font-bold text-[17px] transition-all hover:shadow-[0_0_50px_rgba(140,82,255,0.5)] hover:-translate-y-1 flex items-center gap-4 group">
+                        <button className="shrink-0 px-10 py-5 bg-home-gradient text-white rounded-2xl font-semibold text-[17px] transition-all hover:shadow-[0_0_50px_rgba(140,82,255,0.5)] hover:-translate-y-1 flex items-center gap-4 group">
                             Get Full Syllabus <Rocket className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500" />
                         </button>
                     </ApplicationFormModal>

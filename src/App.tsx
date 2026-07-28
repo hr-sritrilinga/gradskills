@@ -17,6 +17,7 @@ import PartnerWithUs from "./pages/PartnerWithUs";
 import ApplyIntern from "./pages/ApplyIntern";
 import Buildathon from "./pages/Buildathon";
 import BuildathonAdmin from "./pages/BuildathonAdmin";
+import ManusWorkshop from "./pages/ManusWorkshop";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +66,7 @@ const App = () => (
                 <Route path="/apply-intern" element={<ApplyIntern />} />
                 <Route path="/buildathon-2405" element={<Buildathon />} />
                 <Route path="/buildathon-admin" element={<BuildathonAdmin />} />
+                <Route path="/master-manus-ai" element={<ManusWorkshop />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>

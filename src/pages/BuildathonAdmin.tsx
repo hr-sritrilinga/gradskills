@@ -188,7 +188,7 @@ export default function BuildathonAdmin() {
 
       {/* ─── ADMIN DASHBOARD ───── */}
       <SignedIn>
-        {user?.primaryEmailAddress?.emailAddress !== "kakkirenivishwas@gmail.com" ? (
+        {!["kakkirenivishwas@gmail.com", "support@procreationstudio.com"].includes(user?.primaryEmailAddress?.emailAddress || "") ? (
           <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
             <div className="bg-white p-10 rounded-2xl shadow-xl max-w-md w-full text-center border border-slate-200">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -214,16 +214,16 @@ export default function BuildathonAdmin() {
                 <p className="text-white/40 text-[14px]">Manage all applications</p>
               </div>
               <div className="flex items-center gap-4">
-                <button onClick={fetchApplications} className="p-3 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-colors" title="Refresh">
+                <button onClick={fetchApplications} className="p-3 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-colors" title="Refresh">
                   <RefreshCw className={`w-4 h-4 text-white/60 ${loading ? "animate-spin" : ""}`} />
                 </button>
                 
                 {/* Export Dropdown */}
                 <div className="relative group/export">
-                  <button className="px-5 py-3 rounded-xl bg-green-600 hover:bg-green-500 font-semibold text-[14px] flex items-center gap-2 transition-colors">
+                  <button className="px-5 py-3 rounded-2xl bg-green-600 hover:bg-green-500 font-semibold text-[14px] flex items-center gap-2 transition-colors">
                     <Download className="w-4 h-4" /> Export Excel
                   </button>
-                  <div className="absolute right-0 top-full mt-2 w-48 bg-[#1f2937] border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover/export:opacity-100 group-hover/export:visible transition-all z-50 overflow-hidden">
+                  <div className="absolute right-0 top-full mt-2 w-48 bg-[#1f2937] border border-white/10 rounded-2xl shadow-2xl opacity-0 invisible group-hover/export:opacity-100 group-hover/export:visible transition-all z-50 overflow-hidden">
                     <button onClick={() => exportExcel("all")} className="w-full px-4 py-3 text-left text-[13px] hover:bg-white/5 transition-colors border-b border-white/5">Export All</button>
                     <button onClick={() => exportExcel("approved")} className="w-full px-4 py-3 text-left text-[13px] hover:bg-green-500/10 text-green-400 hover:bg-green-500/20 transition-colors border-b border-white/5">Export Approved</button>
                     <button onClick={() => exportExcel("rejected")} className="w-full px-4 py-3 text-left text-[13px] hover:bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-colors">Export Rejected</button>
@@ -267,13 +267,13 @@ export default function BuildathonAdmin() {
                   placeholder="Search name, email, college..."
                   value={search}
                   onChange={e => { setSearch(e.target.value); setPage(1); }}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl border bg-white/[0.03] border-white/10 text-white text-[14px] outline-none focus:border-[#8c52ff]/50"
+                  className="w-full pl-11 pr-4 py-3 rounded-2xl border bg-white/[0.03] border-white/10 text-white text-[14px] outline-none focus:border-[#8c52ff]/50"
                 />
               </div>
                 <select 
                   value={statusFilter} 
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="px-4 py-2.5 rounded-xl border border-white/10 bg-[#1f2937] text-white text-[13px] outline-none focus:ring-2 focus:ring-[#8c52ff]/50 transition-all cursor-pointer appearance-none min-w-[120px]"
+                  className="px-4 py-2.5 rounded-2xl border border-white/10 bg-[#1f2937] text-white text-[13px] outline-none focus:ring-2 focus:ring-[#8c52ff]/50 transition-all cursor-pointer appearance-none min-w-[120px]"
                 >
                   <option value="all">All Status</option>
                   <option value="pending">Pending</option>
@@ -284,7 +284,7 @@ export default function BuildathonAdmin() {
                 <select 
                   value={experienceFilter} 
                   onChange={(e) => setExperienceFilter(e.target.value)}
-                  className="px-4 py-2.5 rounded-xl border border-white/10 bg-[#1f2937] text-white text-[13px] outline-none focus:ring-2 focus:ring-[#8c52ff]/50 transition-all cursor-pointer appearance-none min-w-[140px]"
+                  className="px-4 py-2.5 rounded-2xl border border-white/10 bg-[#1f2937] text-white text-[13px] outline-none focus:ring-2 focus:ring-[#8c52ff]/50 transition-all cursor-pointer appearance-none min-w-[140px]"
                 >
                   <option value="">All Experience</option>
                   <option value="Beginner">Beginner</option>
@@ -297,13 +297,13 @@ export default function BuildathonAdmin() {
             {selectedIds.length > 0 && (
               <div className="flex items-center gap-3 mb-4 p-4 rounded-xl border border-[#8c52ff]/20 bg-[#8c52ff]/5">
                 <span className="text-[14px] font-semibold text-white/70">{selectedIds.length} selected</span>
-                <button onClick={() => bulkUpdate("approved")} className="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-[13px] font-semibold transition-colors flex items-center gap-1.5">
+                <button onClick={() => bulkUpdate("approved")} className="px-4 py-2 rounded-2xl bg-green-600 hover:bg-green-500 text-[13px] font-semibold transition-colors flex items-center gap-1.5">
                   <CheckCircle className="w-3.5 h-3.5" /> Approve All
                 </button>
-                <button onClick={() => bulkUpdate("rejected")} className="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-[13px] font-semibold transition-colors flex items-center gap-1.5">
+                <button onClick={() => bulkUpdate("rejected")} className="px-4 py-2 rounded-2xl bg-red-600 hover:bg-red-500 text-[13px] font-semibold transition-colors flex items-center gap-1.5">
                   <XCircle className="w-3.5 h-3.5" /> Reject All
                 </button>
-                <button onClick={() => bulkUpdate("pending")} className="px-4 py-2 rounded-lg bg-yellow-600 hover:bg-yellow-500 text-[13px] font-semibold transition-colors flex items-center gap-1.5">
+                <button onClick={() => bulkUpdate("pending")} className="px-4 py-2 rounded-2xl bg-yellow-600 hover:bg-yellow-500 text-[13px] font-semibold transition-colors flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5" /> Reset to Pending
                 </button>
               </div>

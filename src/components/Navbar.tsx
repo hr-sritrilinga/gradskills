@@ -42,24 +42,7 @@ export default function Navbar({
           : "bg-white/80 backdrop-blur-xl border-b border-slate-200 shadow-sm"
         : "bg-transparent"
     } font-sans`}>
-      {/* Premium Announcement Bar */}
-      <div className="w-full bg-home-gradient py-2.5 px-4 text-center relative overflow-hidden group">
-        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-        <div className="relative z-10 flex items-center justify-center gap-3">
-          {customBanner ? (
-            customBanner
-          ) : (
-            <>
-              <span className="text-white text-[11px] sm:text-[13px] font-bold tracking-[0.05em] uppercase flex items-center gap-2">
-                <span className="hidden sm:inline">🚀</span> Applications for the Summer '26 Product Builder Internship are live!
-              </span>
-              <Link to="/apply-intern" className="text-white text-[11px] sm:text-[13px] font-black uppercase tracking-widest underline underline-offset-4 hover:text-white/80 transition-colors cursor-pointer">
-                Apply Now
-              </Link>
-            </>
-          )}
-        </div>
-      </div>
+
 
       <div className={`mx-auto flex max-w-[1350px] items-center justify-between px-6 transition-all duration-500 ${scrolled ? "py-3" : "py-6"}`}>
 
@@ -90,11 +73,9 @@ export default function Navbar({
         {/* Action Group: Toggle + CTA */}
         {!simple && (
           <div className="hidden lg:flex items-center gap-6">
-            <ApplicationFormModal>
-              <button className="bg-home-gradient text-white px-8 py-3 rounded-lg text-[14px] font-bold transition-all hover:opacity-90 shadow-[0_0_20px_rgba(255,87,87,0.2)] hover:shadow-[0_0_30px_rgba(140,82,255,0.4)] hover:-translate-y-0.5">
-                Apply Now
-              </button>
-            </ApplicationFormModal>
+            <button onClick={() => setShowModal(true)} className="bg-home-gradient text-white px-8 py-3 rounded-2xl text-[14px] font-semibold transition-all hover:opacity-90 shadow-[0_0_20px_rgba(255,87,87,0.2)] hover:shadow-[0_0_30px_rgba(140,82,255,0.4)] hover:-translate-y-0.5">
+              Apply Now
+            </button>
           </div>
         )}
 

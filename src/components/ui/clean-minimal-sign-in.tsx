@@ -212,7 +212,7 @@ const SignIn2 = () => {
                   value={email}
                   disabled={loading}
                   autoFocus
-                  className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-100 bg-gray-50/50 text-black text-[15px] transition-all"
+                  className="w-full pl-11 pr-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-100 bg-gray-50/50 text-black text-[15px] transition-all"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -225,7 +225,7 @@ const SignIn2 = () => {
                   value={code}
                   disabled={loading}
                   autoFocus
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-100 bg-gray-50/50 text-black text-center text-2xl tracking-[0.5em] font-bold transition-all"
+                  className="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-100 bg-gray-50/50 text-black text-center text-2xl tracking-[0.5em] font-bold transition-all"
                   onChange={(e) => setCode(e.target.value)}
                 />
               </div>
@@ -238,7 +238,7 @@ const SignIn2 = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-b from-gray-800 to-gray-950 text-white font-bold py-3.5 rounded-xl shadow-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-2"
+              className="w-full bg-gradient-to-b from-gray-800 to-gray-950 text-white font-semibold py-3.5 rounded-2xl shadow-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-2"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin text-white/50" /> : (
                 mode === 'enter-email' ? "Send Secure Code" : "Verify & Sign In"
@@ -251,7 +251,7 @@ const SignIn2 = () => {
               setMode('enter-email');
               setError("");
             }}
-            className="w-full bg-gray-100 text-gray-900 font-bold py-3.5 rounded-xl hover:bg-gray-200 transition-all"
+            className="w-full bg-gray-100 text-gray-900 font-semibold py-3.5 rounded-2xl hover:bg-gray-200 transition-all"
           >
             Try Another Email
           </button>

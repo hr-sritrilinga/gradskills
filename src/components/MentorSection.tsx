@@ -43,7 +43,7 @@ export default function MentorSection({ theme = "dark" }: { theme?: "dark" | "li
                         >
                             <Link 
                                 to="/apply-mentor" 
-                                className="group flex items-center justify-center gap-3 bg-white text-black px-10 py-6 rounded-xl font-bold text-[20px] transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_60px_rgba(140,82,255,0.3)]"
+                                className="group flex items-center justify-center gap-3 bg-white text-black px-10 py-6 rounded-2xl font-semibold text-[20px] transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_60px_rgba(140,82,255,0.3)]"
                             >
                                 Apply as Mentor <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
                             </Link>

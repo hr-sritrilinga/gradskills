@@ -80,7 +80,7 @@ export default function ImpactSection({ theme = "dark" }: { theme?: "dark" | "li
                 {/* Button Glow */}
                 <div className="absolute -inset-2 bg-home-gradient rounded-2xl blur-lg opacity-30 group-hover/btn:opacity-60 transition duration-500" />
 
-                <div className="relative inline-flex items-center justify-center bg-home-gradient text-white px-12 py-6 rounded-xl font-bold tracking-[0.2em] text-[18px] sm:text-[22px] uppercase shadow-2xl transition-transform duration-300">
+                <div className="relative inline-flex items-center justify-center bg-home-gradient text-white px-12 py-6 rounded-2xl font-semibold tracking-[0.2em] text-[18px] sm:text-[22px] uppercase shadow-2xl transition-transform duration-300">
                   Join the Next Cohort
                 </div>
               </motion.div>

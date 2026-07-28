@@ -83,42 +83,37 @@ export default function Buildathon() {
 
   const timeline = [
     {
-      date: "11 May",
-      title: "Applications open",
+      date: "11th May – 23rd May",
+      title: "Registrations Open",
       tag: "Live",
-      desc: "Registration is open. Drop your details and link your portfolio.",
-      points: ["Final Year / Grads prioritized", "Hyderabad", "AI Product Builder Role"],
+      desc: "(Final Year Students & Graduates Only)",
     },
     {
-      date: "16 May",
-      title: "Registrations Close",
-      tag: "Deadline",
-      desc: "No late entries. Problem statements drop at exactly midnight.",
-      points: ["Verification process begins"],
-    },
-    {
-      date: "17–19 May",
-      title: "The 48-Hour Sprint",
+      date: "24th May – 26th May",
+      title: "Round 1 – Online Build Phase",
       tag: "Build",
-      desc: "Code, design, and deploy. You have 48 hours to ship a working SaaS prototype. Submission requires a GitHub repo and a 3-minute demo video.",
-      points: ["70% core logic", "30% product insights"],
+      desc: "Build your solution & submit",
     },
     {
-      date: "20–21 May",
-      title: "Internal Review",
-      desc: "Our engineering team and CodeQuesters evaluate your code quality, execution, and UI/UX.",
+      date: "27th May – 28th May",
+      title: "Evaluation of Round 1 Submissions",
+      desc: "Shortlisting the best builds",
     },
     {
-      date: "22 May",
-      title: "Shortlist Announced",
-      desc: "Emails go out to the top tier. If you made the cut, you'll know.",
+      date: "29th May",
+      title: "Announcement of Top 50 – 60 Builders",
+      desc: "Qualifiers for the Final Offline Round",
     },
     {
-      date: "24 May",
-      title: "Offline Finals & Offers",
+      date: "30th May",
+      title: "Online Orientation Meet",
+      desc: "Briefing & guidance for the final round",
+    },
+    {
+      date: "31st May",
+      title: "Grand Finale – Offline Final Round",
       tag: "D-Day",
-      desc: "Present your product live to the panel. We hand out offer letters on the spot to the best builders.",
-      points: ["60 offline seats available", "10 direct offers"],
+      desc: "Pitch, Present & Compete Live!",
     },
   ];
 
@@ -183,7 +178,7 @@ export default function Buildathon() {
               Not just another hackathon. This is your interview, internship and opportunity - earned through building.
             </p>
 
-            <a href="#register" className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-bold text-[16px] transition-all bg-[#8c52ff] hover:bg-[#7a42e5] text-white shadow-[0_0_20px_rgba(140,82,255,0.3)] hover:shadow-[0_0_30px_rgba(140,82,255,0.5)]">
+            <a href="#register" className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-[16px] transition-all bg-[#8c52ff] hover:bg-[#7a42e5] text-white shadow-[0_0_20px_rgba(140,82,255,0.3)] hover:shadow-[0_0_30px_rgba(140,82,255,0.5)]">
               Apply to Build <ArrowRight className="w-4 h-4" />
             </a>
           </div>
@@ -375,7 +370,7 @@ export default function Buildathon() {
                 <input name="full_name" placeholder="Full Name" required value={form.full_name} onChange={handleChange} className={inputClass} />
                 <input name="email" type="email" placeholder="Email Address" required value={form.email} onChange={handleChange} className={inputClass} />
                 <input name="phone" placeholder="WhatsApp Number" required value={form.phone} onChange={handleChange} className={inputClass} />
-                <input name="college" placeholder="College / University" required value={form.college} onChange={handleChange} className={inputClass} />
+                <input name="college" placeholder="Qualification" required value={form.college} onChange={handleChange} className={inputClass} />
 
                 {/* Custom Modern Select */}
                 <div className="relative">
@@ -432,7 +427,7 @@ export default function Buildathon() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 rounded-lg font-bold text-[15px] transition-all flex items-center justify-center gap-2 mt-2 bg-[#8c52ff] hover:bg-[#7a42e5] text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(140,82,255,0.2)] hover:shadow-[0_0_25px_rgba(140,82,255,0.4)]"
+                  className="w-full py-4 rounded-2xl font-semibold text-[15px] transition-all flex items-center justify-center gap-2 mt-2 bg-[#8c52ff] hover:bg-[#7a42e5] text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(140,82,255,0.2)] hover:shadow-[0_0_25px_rgba(140,82,255,0.4)]"
                 >
                   {loading ? <><Loader2 className="w-5 h-5 animate-spin" /> Processing...</> : "Submit Application"}
                 </button>

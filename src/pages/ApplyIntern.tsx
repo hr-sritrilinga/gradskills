@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { User, Mail, Phone, GraduationCap, FileUp, Send, CheckCircle2, Rocket, Code, Laptop } from "lucide-react";
+import { User, Mail, Phone, GraduationCap, FileUp, Send, CheckCircle2, Rocket, Code, Laptop, Linkedin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -170,20 +170,35 @@ export default function ApplyIntern() {
                                     </div>
                                 </div>
 
-                                {/* Email */}
-                                <div className="space-y-2">
-                                    <label className={`text-[12px] font-black uppercase tracking-[0.2em] ml-1 transition-colors ${isDark ? "text-white/40" : "text-slate-400"}`}>Email Address</label>
-                                    <div className="relative group">
-                                        <Mail className={`absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${isDark ? "text-white/20" : "text-slate-300"} group-focus-within:text-[#8c52ff]`} />
-                                        <input 
-                                            required
-                                            name="email"
-                                            type="email" 
-                                            placeholder="your@email.com"
-                                            className={`w-full border rounded-2xl py-4 pl-14 pr-6 focus:outline-none focus:border-[#8c52ff]/50 transition-all ${isDark ? "bg-white/5 border-white/10 text-white placeholder:text-white/10" : "bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-300"}`}
-                                        />
-                                    </div>
-                                </div>
+                                 {/* Email */}
+                                 <div className="space-y-2">
+                                     <label className={`text-[12px] font-black uppercase tracking-[0.2em] ml-1 transition-colors ${isDark ? "text-white/40" : "text-slate-400"}`}>Email Address</label>
+                                     <div className="relative group">
+                                         <Mail className={`absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${isDark ? "text-white/20" : "text-slate-300"} group-focus-within:text-[#8c52ff]`} />
+                                         <input 
+                                             required
+                                             name="email"
+                                             type="email" 
+                                             placeholder="your@email.com"
+                                             className={`w-full border rounded-2xl py-4 pl-14 pr-6 focus:outline-none focus:border-[#8c52ff]/50 transition-all ${isDark ? "bg-white/5 border-white/10 text-white placeholder:text-white/10" : "bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-300"}`}
+                                         />
+                                     </div>
+                                 </div>
+
+                                 {/* LinkedIn URL */}
+                                 <div className="space-y-2">
+                                     <label className={`text-[12px] font-black uppercase tracking-[0.2em] ml-1 transition-colors ${isDark ? "text-white/40" : "text-slate-400"}`}>LinkedIn Profile URL</label>
+                                     <div className="relative group">
+                                         <Linkedin className={`absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${isDark ? "text-white/20" : "text-slate-300"} group-focus-within:text-[#8c52ff]`} />
+                                         <input 
+                                             required
+                                             name="linkedin_url"
+                                             type="url" 
+                                             placeholder="https://linkedin.com/in/yourprofile"
+                                             className={`w-full border rounded-2xl py-4 pl-14 pr-6 focus:outline-none focus:border-[#8c52ff]/50 transition-all ${isDark ? "bg-white/5 border-white/10 text-white placeholder:text-white/10" : "bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-300"}`}
+                                         />
+                                     </div>
+                                 </div>
 
                                 <div className="grid sm:grid-cols-2 gap-6">
                                     {/* Phone */}
@@ -201,19 +216,44 @@ export default function ApplyIntern() {
                                         </div>
                                     </div>
 
-                                    {/* Qualification */}
+                                    {/* Qualification Dropdown */}
                                     <div className="space-y-2">
-                                        <label className={`text-[12px] font-black uppercase tracking-[0.2em] ml-1 transition-colors ${isDark ? "text-white/40" : "text-slate-400"}`}>College / Year</label>
+                                        <label className={`text-[12px] font-black uppercase tracking-[0.2em] ml-1 transition-colors ${isDark ? "text-white/40" : "text-slate-400"}`}>Qualification</label>
                                         <div className="relative group">
-                                            <GraduationCap className={`absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${isDark ? "text-white/20" : "text-slate-300"} group-focus-within:text-[#8c52ff]`} />
-                                            <input 
+                                            <GraduationCap className={`absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 transition-colors ${isDark ? "text-white/20" : "text-slate-300"} group-focus-within:text-[#8c52ff] z-10`} />
+                                            <select 
                                                 required
                                                 name="qualification"
-                                                type="text" 
-                                                placeholder="B.Tech, 3rd Year etc."
-                                                className={`w-full border rounded-2xl py-4 pl-14 pr-6 focus:outline-none focus:border-[#8c52ff]/50 transition-all ${isDark ? "bg-white/5 border-white/10 text-white placeholder:text-white/10" : "bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-300"}`}
-                                            />
+                                                className={`w-full border rounded-2xl py-4 pl-14 pr-6 focus:outline-none focus:border-[#8c52ff]/50 transition-all appearance-none cursor-pointer ${isDark ? "bg-white/5 border-white/10 text-white" : "bg-slate-50 border-slate-200 text-slate-900"}`}
+                                            >
+                                                <option value="" disabled selected className={isDark ? "bg-[#030712]" : "bg-white"}>Select Year</option>
+                                                <option value="1st year" className={isDark ? "bg-[#030712]" : "bg-white"}>1st year</option>
+                                                <option value="2nd year" className={isDark ? "bg-[#030712]" : "bg-white"}>2nd year</option>
+                                                <option value="3rd year" className={isDark ? "bg-[#030712]" : "bg-white"}>3rd year</option>
+                                                <option value="final year" className={isDark ? "bg-[#030712]" : "bg-white"}>final year</option>
+                                                <option value="graduated" className={isDark ? "bg-[#030712]" : "bg-white"}>graduated</option>
+                                            </select>
+                                            <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+                                                <svg className={`w-4 h-4 ${isDark ? "text-white/20" : "text-slate-400"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            </div>
                                         </div>
+                                    </div>
+                                </div>
+
+                                {/* Internship Readiness */}
+                                <div className="space-y-4 p-4 rounded-2xl border border-[#8c52ff]/20 bg-[#8c52ff]/5">
+                                    <label className={`text-[14px] font-bold leading-tight transition-colors ${isDark ? "text-white/80" : "text-slate-700"}`}>
+                                        Are you ready to do an internship for 3 months?
+                                    </label>
+                                    <div className="flex gap-6">
+                                        <label className="flex items-center gap-2 cursor-pointer group">
+                                            <input required type="radio" name="internship_ready" value="yes" className="w-4 h-4 accent-[#8c52ff]" />
+                                            <span className={`text-[14px] font-medium transition-colors ${isDark ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-slate-900"}`}>Yes, I am</span>
+                                        </label>
+                                        <label className="flex items-center gap-2 cursor-pointer group">
+                                            <input required type="radio" name="internship_ready" value="no" className="w-4 h-4 accent-[#8c52ff]" />
+                                            <span className={`text-[14px] font-medium transition-colors ${isDark ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-slate-900"}`}>No</span>
+                                        </label>
                                     </div>
                                 </div>
 
@@ -239,7 +279,7 @@ export default function ApplyIntern() {
 
                                 <button 
                                     disabled={isSubmitting}
-                                    className="w-full bg-home-gradient text-white py-5 rounded-2xl font-black text-[18px] tracking-tight flex items-center justify-center gap-3 transition-all hover:shadow-[0_0_30px_rgba(140,82,255,0.4)] disabled:opacity-50 disabled:cursor-not-allowed group"
+                                    className="w-full bg-home-gradient text-white py-5 rounded-2xl font-semibold text-[18px] tracking-tight flex items-center justify-center gap-3 transition-all hover:shadow-[0_0_30px_rgba(140,82,255,0.4)] disabled:opacity-50 disabled:cursor-not-allowed group"
                                 >
                                     {isSubmitting ? "Submitting..." : "Apply Now"}
                                     <Send className={`w-5 h-5 transition-transform ${!isSubmitting && "group-hover:translate-x-1 group-hover:-translate-y-1"}`} />

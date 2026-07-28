@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Play, ArrowRight, CheckCircle2, Terminal, LineChart, Globe, Cpu } from "lucide-react";
 import { ApplicationFormModal } from "./ApplicationFormModal";
@@ -38,9 +39,9 @@ export default function HeroSection({ theme = "dark" }: { theme?: "dark" | "ligh
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h1 className={`text-[36px] sm:text-[64px] lg:text-[84px] font-bold leading-[1.2] tracking-tight mb-8 font-['Fira_Sans'] transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>
+            <h1 className={`text-[36px] sm:text-[64px] lg:text-[84px] font-medium leading-[1.2] tracking-tight mb-8 font-['Fira_Sans'] transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>
               <span className="whitespace-nowrap">From Classroom Grad</span> <br />
-              <span className="text-home-gradient">to AI Product Builder</span>
+              <span className="text-home-gradient font-medium">to AI Product Builder</span>
             </h1>
             <p className={`text-[13px] sm:text-[15px] max-w-[1000px] mx-auto text-center leading-relaxed font-light uppercase tracking-[0.25em] font-['Fira_Sans'] transition-colors duration-1000 ${isDark ? "text-white/60" : "text-slate-500"} lg:whitespace-nowrap`}>
               Master the skills to build and ship production-ready products.
@@ -51,48 +52,32 @@ export default function HeroSection({ theme = "dark" }: { theme?: "dark" | "ligh
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col items-center justify-center gap-8 mb-10 mt-10"
+            className="flex flex-col items-center justify-center gap-10 mb-16 mt-12 w-full"
           >
-            <ApplicationFormModal>
-              <button className="bg-home-gradient text-white hover:opacity-90 px-10 py-3.5 rounded-xl font-bold text-[16px] transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(255,87,87,0.2)] hover:shadow-[0_0_30px_rgba(140,82,255,0.4)] hover:-translate-y-1">
-                Apply Now <ArrowRight className="w-4 h-4" />
-              </button>
-            </ApplicationFormModal>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-10">
+              <ApplicationFormModal>
+                <button className="bg-home-gradient text-white hover:opacity-90 px-10 py-4 rounded-2xl font-semibold text-[16px] transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(255,87,87,0.2)] hover:shadow-[0_0_30px_rgba(140,82,255,0.4)] hover:-translate-y-1 w-full sm:w-auto justify-center">
+                  Apply Now <ArrowRight className="w-4 h-4" />
+                </button>
+              </ApplicationFormModal>
 
-            <div className={`flex items-center gap-12 transition-colors duration-1000 ${isDark ? "text-white/80" : "text-slate-600"}`}>
-              <div className="flex flex-col items-center">
-                <span className={`text-[12px] font-semibold uppercase tracking-widest mb-1 transition-colors duration-1000 ${isDark ? "text-white/40" : "text-slate-400"}`}>Start Date</span>
-                <span className={`text-[18px] font-semibold transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>01 June 2026</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className={`text-[12px] font-semibold uppercase tracking-widest mb-1 transition-colors duration-1000 ${isDark ? "text-white/40" : "text-slate-400"}`}>Start Time</span>
-                <span className={`text-[18px] font-semibold transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>10 AM IST</span>
+              <div className="hidden sm:block w-[1px] h-10 bg-white/10"></div>
+
+              <div className={`flex items-center gap-10 transition-colors duration-1000 ${isDark ? "text-white/80" : "text-slate-600"}`}>
+                <div className="flex flex-col items-start">
+                  <span className={`text-[11px] font-semibold uppercase tracking-widest mb-1 transition-colors duration-1000 ${isDark ? "text-white/40" : "text-slate-400"}`}>Start Date</span>
+                  <span className={`text-[17px] font-bold transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>01 July 2026</span>
+                </div>
+                <div className="flex flex-col items-start">
+                  <span className={`text-[11px] font-semibold uppercase tracking-widest mb-1 transition-colors duration-1000 ${isDark ? "text-white/40" : "text-slate-400"}`}>Start Time</span>
+                  <span className={`text-[17px] font-bold transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>10 AM IST</span>
+                </div>
               </div>
             </div>
           </motion.div>
 
           <TechMarquee theme={theme} />
 
-          {/* Stats Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-3 gap-4 sm:gap-24 text-center justify-items-center w-full"
-          >
-            <div className="flex flex-col">
-              <span className={`text-[20px] sm:text-[36px] font-bold leading-none mb-1.5 font-['Fira_Sans'] transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>3000+</span>
-              <span className={`text-[10px] sm:text-[14px] font-semibold uppercase tracking-wider font-['Fira_Sans'] transition-colors duration-1000 ${isDark ? "text-white/50" : "text-slate-400"}`}>Active Learners</span>
-            </div>
-            <div className="flex flex-col">
-              <span className={`text-[20px] sm:text-[36px] font-bold leading-none mb-1.5 font-['Fira_Sans'] transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>10K+</span>
-              <span className={`text-[10px] sm:text-[14px] font-semibold uppercase tracking-wider font-['Fira_Sans'] transition-colors duration-1000 ${isDark ? "text-white/50" : "text-slate-400"}`}>Students Trained</span>
-            </div>
-            <div className="flex flex-col">
-              <span className={`text-[20px] sm:text-[36px] font-bold leading-none mb-1.5 font-['Fira_Sans'] transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>5+</span>
-              <span className={`text-[10px] sm:text-[14px] font-semibold uppercase tracking-wider font-['Fira_Sans'] transition-colors duration-1000 ${isDark ? "text-white/50" : "text-slate-400"}`}>Years Experience</span>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

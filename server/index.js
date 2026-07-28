@@ -8,7 +8,7 @@ const { requireAuth } = require("@clerk/express");
 const { createClient } = require("@supabase/supabase-js");
 const multer = require("multer");
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
-
+const Razorpay = require("razorpay");
 // ─── CONFIG ────────────────────────────────────────────────────────────────────
 const PORT = process.env.PORT || 4000;
 const CORS_ORIGIN = process.env.CORS_ORIGIN || "*";
@@ -24,6 +24,14 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// Razorpay
+let razorpay;
+if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
+  razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+  });
+}
 // Cloudflare R2 (Optional for now, will implement when keys provided)
 let s3;
 if (process.env.R2_ACCOUNT_ID) {
@@ -61,8 +69,7 @@ const submitLimiter = rateLimit({
 
 // ─── MIDDLEWARE: Admin auth ────────────────────────────────────────────────────
 const WHITELISTED_ADMINS = [
-  "kakkerenivishwas1@gmail.com",
-  "kakkerenivishwas@gmail.com",
+  "kakkirenivishwas@gmail.com",
   "support@procreationstudio.com"
 ];
 
@@ -85,6 +92,29 @@ const adminAuth = (req, res, next) => {
 
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
+// Create Razorpay Order
+app.post("/api/create-razorpay-order", async (req, res) => {
+  if (!razorpay) {
+    return res.status(500).json({ error: "Razorpay not configured on server" });
+  }
+  
+  try {
+    const { amount = 9900 } = req.body; // Default ₹99 (in paise)
+
+    const options = {
+      amount,
+      currency: "INR",
+      receipt: `receipt_${Date.now()}_${Math.random().toString(36).substring(7)}`,
+    };
+
+    const order = await razorpay.orders.create(options);
+    res.json({ success: true, order });
+  } catch (error) {
+    console.error("Razorpay order creation error:", error);
+    res.status(500).json({ error: "Failed to create Razorpay order" });
+  }
 });
 
 // Helper to upload to R2

@@ -54,57 +54,40 @@ export function ApplicationFormModal({
         const pageName = isHome ? "Home" : isElevate ? "Elevate" : isFoundation ? "Foundational" : "AI Product Builder";
 
         try {
-            // 1. Save to Supabase (Database)
-            const { error } = await supabase.from('applications').insert([
-                {
-                    name: formData.name,
-                    phone: formData.phone,
-                    email: formData.email,
-                    college: formData.college,
-                    current_status: formData.status,
-                    source_page: pageName
+            // Send Email Notification (via Web3Forms)
+            const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || "d9940085-bcaa-494a-a422-350e57cf3f83";
+
+            if (WEB3FORMS_ACCESS_KEY) {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify({
+                        access_key: WEB3FORMS_ACCESS_KEY,
+                        subject: `New Lead: ${formData.name} from ${pageName}`,
+                        from_name: "GradSkills Website",
+                        name: formData.name,
+                        email: formData.email,
+                        phone: formData.phone,
+                        college: formData.college,
+                        status: formData.status,
+                        page: pageName
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to submit to Web3Forms");
                 }
-            ]);
-
-            if (error) {
-                console.error("Supabase Error:", error.message);
-                toast.error("Database Error. Please make sure the applications table exists.");
-                return;
-            }
-
-            // 2. Send Email Notification (via Web3Forms - Free & No Branding)
-            try {
-                // To activate this, the user needs to get a free key from web3forms.com
-                const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || "d9940085-bcaa-494a-a422-350e57cf3f83";
-
-                if (WEB3FORMS_ACCESS_KEY) {
-                    await fetch("https://api.web3forms.com/submit", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Accept: "application/json",
-                        },
-                        body: JSON.stringify({
-                            access_key: WEB3FORMS_ACCESS_KEY,
-                            subject: `New Lead: ${formData.name} from ${pageName}`,
-                            from_name: "GradSkills Website",
-                            name: formData.name,
-                            email: formData.email,
-                            phone: formData.phone,
-                            college: formData.college,
-                            status: formData.status,
-                            page: pageName
-                        }),
-                    });
-                }
-            } catch (emailErr) {
-                console.warn("Could not send email notification:", emailErr);
+            } else {
+                throw new Error("Missing Web3Forms Access Key");
             }
 
             setIsSubmitted(true);
         } catch (err: any) {
             console.error("Submission Error:", err);
-            toast.error("Failed to submit application.");
+            toast.error("Failed to submit application. Please try again later.");
         } finally {
             setIsLoading(false);
         }
@@ -215,8 +198,8 @@ export function ApplicationFormModal({
                                 </div>
 
                                 <div className={`flex flex-col gap-1.5 focus-within:text-[${isHome ? '#8c52ff' : isElevate ? '#f97316' : isFoundation ? '#9333ea' : '#2563eb'}] group`}>
-                                    <label className={`text-[11px] font-semibold text-gray-500 uppercase tracking-widest transition-colors ${isHome ? "group-focus-within:text-[#8c52ff]" : isElevate ? "group-focus-within:text-orange-500" : isFoundation ? "group-focus-within:text-purple-600" : "group-focus-within:text-blue-600"}`}>College / University</label>
-                                    <input required type="text" value={formData.college} onChange={e => setFormData({ ...formData, college: e.target.value })} className={`bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-[16px] text-gray-900 focus:outline-none focus:ring-1 transition-all font-medium placeholder:text-gray-400 ${isHome ? "focus:border-[#8c52ff] focus:ring-[#8c52ff]" : isElevate ? "focus:border-orange-500 focus:ring-orange-500" : isFoundation ? "focus:border-purple-600 focus:ring-purple-600" : "focus:border-blue-500 focus:ring-blue-500"}`} placeholder="Your University/College" />
+                                    <label className={`text-[11px] font-semibold text-gray-500 uppercase tracking-widest transition-colors ${isHome ? "group-focus-within:text-[#8c52ff]" : isElevate ? "group-focus-within:text-orange-500" : isFoundation ? "group-focus-within:text-purple-600" : "group-focus-within:text-blue-600"}`}>Qualification</label>
+                                    <input required type="text" value={formData.college} onChange={e => setFormData({ ...formData, college: e.target.value })} className={`bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-[16px] text-gray-900 focus:outline-none focus:ring-1 transition-all font-medium placeholder:text-gray-400 ${isHome ? "focus:border-[#8c52ff] focus:ring-[#8c52ff]" : isElevate ? "focus:border-orange-500 focus:ring-orange-500" : isFoundation ? "focus:border-purple-600 focus:ring-purple-600" : "focus:border-blue-500 focus:ring-blue-500"}`} placeholder="Your Qualification" />
                                 </div>
 
                                 <div className={`flex flex-col gap-1.5 focus-within:text-[${isHome ? '#8c52ff' : isElevate ? '#f97316' : isFoundation ? '#9333ea' : '#2563eb'}] group relative`}>
@@ -235,7 +218,7 @@ export function ApplicationFormModal({
                                     </Select>
                                 </div>
 
-                                <button disabled={isLoading} type="submit" className={`mt-4 w-full flex items-center justify-center gap-2 text-white font-semibold py-4 rounded-xl text-[16px] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 disabled:opacity-75 disabled:pointer-events-none ${isHome ? "bg-home-gradient hover:opacity-90 shadow-[#8c52ff]/10" : isElevate ? "bg-orange-500 hover:bg-orange-600 shadow-orange-500/20" : isFoundation ? "bg-purple-600 hover:bg-purple-700 shadow-purple-600/20" : "bg-blue-800 hover:bg-blue-900 shadow-blue-800/20"}`}>
+                                <button disabled={isLoading} type="submit" className={`mt-4 w-full flex items-center justify-center gap-2 text-white font-semibold py-4 rounded-2xl text-[16px] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 disabled:opacity-75 disabled:pointer-events-none ${isHome ? "bg-home-gradient hover:opacity-90 shadow-[#8c52ff]/10" : isElevate ? "bg-orange-500 hover:bg-orange-600 shadow-orange-500/20" : isFoundation ? "bg-purple-600 hover:bg-purple-700 shadow-purple-600/20" : "bg-blue-800 hover:bg-blue-900 shadow-blue-800/20"}`}>
                                     {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Submit Application <ArrowRightIcon className="w-5 h-5" /></>}
                                 </button>
                             </form>

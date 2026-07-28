@@ -165,7 +165,7 @@ export default function PricingSection({ theme = "dark" }: { theme?: "dark" | "l
                       </div>
 
                       <ApplicationFormModal>
-                        <button className="w-full group flex items-center justify-center gap-3 bg-home-gradient text-white px-8 py-5 rounded-xl font-bold text-[17px] transition-all shadow-xl hover:opacity-90 active:scale-95">
+                        <button className="w-full group flex items-center justify-center gap-3 bg-home-gradient text-white px-8 py-5 rounded-2xl font-semibold text-[17px] transition-all shadow-xl hover:opacity-90 active:scale-95">
                           {productBuilder.button} <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
                         </button>
                       </ApplicationFormModal>
@@ -229,7 +229,7 @@ export default function PricingSection({ theme = "dark" }: { theme?: "dark" | "l
                     </motion.div>
 
                     <ApplicationFormModal>
-                      <button className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-home-gradient text-white px-10 py-5 rounded-xl font-bold text-[18px] transition-all shadow-[0_0_20px_rgba(255,87,87,0.2)] hover:shadow-[0_0_40px_rgba(140,82,255,0.4)] hover:-translate-y-1">
+                      <button className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-home-gradient text-white px-10 py-5 rounded-2xl font-semibold text-[18px] transition-all shadow-[0_0_20px_rgba(255,87,87,0.2)] hover:shadow-[0_0_40px_rgba(140,82,255,0.4)] hover:-translate-y-1">
                         {productBuilder.button} <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
                       </button>
                     </ApplicationFormModal>
