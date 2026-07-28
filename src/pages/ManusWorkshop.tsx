@@ -282,14 +282,14 @@ export default function ManusWorkshop() {
                         </div>
 
                         <div className="flex items-center gap-5 mb-6">
-                            <img src={manusIcon} alt="Manus AI" className="w-14 h-14 sm:w-[68px] sm:h-[68px]" />
+                            <img src={manusIcon} alt="Manus AI" className="w-14 h-14 sm:w-[68px] sm:h-[68px] mix-blend-screen grayscale contrast-200 brightness-[200%]" />
                             <div className="leading-none">
                                 <h1 className="text-[42px] sm:text-[60px] lg:text-[68px] font-semibold tracking-tight leading-[0.92]">MASTER</h1>
                                 <h1 className="text-[42px] sm:text-[60px] lg:text-[68px] font-semibold tracking-tight leading-[0.92] text-home-gradient">MANUS AI</h1>
                             </div>
                         </div>
 
-                        <p className="text-[19px] sm:text-[24px] font-light text-white/50 leading-snug mb-3 max-w-[460px]">
+                        <p className="text-[20px] sm:text-[26px] font-semibold leading-snug mb-3 max-w-[460px] text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-purple-300 drop-shadow-sm">
                             For Business Consulting &amp; Client Acquisition
                         </p>
                         <p className="text-[15px] text-white/30 leading-relaxed mb-12 max-w-[420px]">
