@@ -45,6 +45,19 @@ export default function ManusWorkshop() {
         if (formRef.current) observer.observe(formRef.current);
         return () => observer.disconnect();
     }, []);
+    
+    // Check for success parameter in URL (used for Razorpay mobile UPI redirect fallback)
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            setShowSuccess(true);
+            // Optionally remove the query parameter from URL to keep it clean
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else if (urlParams.get('error') === 'true') {
+            toast({ variant: "destructive", title: "Payment failed or was cancelled." });
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    }, [toast]);
 
     // 15-minute countdown timer
     const [timeLeft, setTimeLeft] = useState(15 * 60);
@@ -215,7 +228,9 @@ export default function ManusWorkshop() {
                 },
                 theme: {
                     color: "#8c52ff"
-                }
+                },
+                callback_url: `${apiUrl}/api/payment-callback`,
+                redirect: true
             };
             
             const paymentObject = new (window as any).Razorpay(options);

@@ -58,6 +58,7 @@ const app = express();
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({ origin: CORS_ORIGIN }));
 app.use(express.json({ limit: "5mb" }));
+app.use(express.urlencoded({ extended: true })); // Required to parse Razorpay callback form data
 
 // Rate limit: 30 submissions per IP per 15 minutes
 const submitLimiter = rateLimit({
@@ -115,6 +116,30 @@ app.post("/api/create-razorpay-order", async (req, res) => {
   } catch (error) {
     console.error("Razorpay order creation error:", error);
     res.status(500).json({ error: "Failed to create Razorpay order" });
+  }
+});
+
+// Callback URL for mobile UPI flows where the browser might redirect
+app.post("/api/payment-callback", async (req, res) => {
+  const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
+  try {
+    if (razorpay_payment_id && razorpay_order_id) {
+      await supabase.from('manus_workshop_registrations')
+        .update({
+          payment_status: 'done',
+          payment_id: razorpay_payment_id,
+          signature: razorpay_signature
+        })
+        .eq('order_id', razorpay_order_id);
+      
+      // Redirect back to frontend with success parameter
+      res.redirect("/master-manus-ai?success=true");
+    } else {
+      res.redirect("/master-manus-ai?error=true");
+    }
+  } catch (err) {
+    console.error("Callback error:", err);
+    res.redirect("/master-manus-ai?error=true");
   }
 });
 
