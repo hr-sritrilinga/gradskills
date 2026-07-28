@@ -281,7 +281,7 @@ export default function ManusWorkshop() {
                         </div>
 
                         <div className="flex items-center gap-5 mb-6">
-                            <img src="https://canva.link/d2zzfaamg3ja6b2" alt="Manus AI" className="w-14 h-14 sm:w-[68px] sm:h-[68px] object-contain" />
+                            <img src="https://www.image2url.com/r2/default/images/1785233931912-fdf1e1e5-a0a2-470c-80a6-b10ef5657c05.jpg" alt="Manus AI" className="w-14 h-14 sm:w-[68px] sm:h-[68px] object-contain rounded-2xl shadow-lg border border-white/10" />
                             <div className="leading-none">
                                 <h1 className="text-[42px] sm:text-[60px] lg:text-[68px] font-semibold tracking-tight leading-[0.92]">MASTER</h1>
                                 <h1 className="text-[42px] sm:text-[60px] lg:text-[68px] font-semibold tracking-tight leading-[0.92] text-home-gradient">MANUS AI</h1>
