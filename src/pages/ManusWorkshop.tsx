@@ -148,7 +148,7 @@ export default function ManusWorkshop() {
             const orderRes = await fetch(`${apiUrl}/api/create-razorpay-order`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount: 9900 }) // ₹99
+                body: JSON.stringify({ amount: 100 }) // ₹1 (Testing)
             });
             const orderData = await orderRes.json();
             if (!orderData.success) throw new Error("Failed to create order");
@@ -329,7 +329,7 @@ export default function ManusWorkshop() {
                                         <div className="text-center mb-10">
                                             <div className="flex items-baseline justify-center gap-2.5 mb-2">
                                                 <span className="text-[20px] font-normal line-through text-white/15">₹299</span>
-                                                <span className="text-[48px] font-semibold text-white leading-none tracking-tight">₹99</span>
+                                                <span className="text-[48px] font-semibold text-white leading-none tracking-tight">₹1</span>
                                             </div>
                                             <p className="text-[12px] text-white/30 tracking-wide">Early-bird pricing · limited seats</p>
                                         </div>
@@ -381,7 +381,7 @@ export default function ManusWorkshop() {
                                             {/* CTA */}
                                             <button disabled={isSubmitting} className="w-full bg-home-gradient text-white py-4 rounded-xl font-semibold text-[15px] flex items-center justify-center gap-2 hover:opacity-90 transition-all disabled:opacity-50">
                                                 {isSubmitting ? "Processing…" : (
-                                                    <>Register Now — ₹99 <ArrowRight className="w-4 h-4" /></>
+                                                    <>Register Now — ₹1 <ArrowRight className="w-4 h-4" /></>
                                                 )}
                                             </button>
 
@@ -563,7 +563,7 @@ export default function ManusWorkshop() {
                         </p>
                         <div className="flex items-baseline justify-center gap-2.5 mb-10">
                             <span className="text-[20px] font-normal line-through text-white/15">₹299</span>
-                            <span className="text-[42px] font-bold text-white leading-none tracking-tight">₹99</span>
+                            <span className="text-[42px] font-bold text-white leading-none tracking-tight">₹1</span>
                         </div>
                         <button onClick={scrollToForm} className="bg-home-gradient text-white px-10 py-4 rounded-xl font-semibold text-[15px] transition-all hover:opacity-90 shadow-[0_0_20px_rgba(255,87,87,0.12)] hover:shadow-[0_0_32px_rgba(140,82,255,0.3)] hover:-translate-y-0.5 inline-flex items-center gap-2">
                             Register Now <ArrowRight className="w-4 h-4" />
@@ -606,7 +606,7 @@ export default function ManusWorkshop() {
 
                             {/* Right — CTA */}
                             <button onClick={scrollToForm} className="bg-home-gradient text-white px-6 sm:px-8 py-3 rounded-xl font-semibold text-[13px] sm:text-[14px] flex items-center gap-2 shrink-0 hover:opacity-90 transition-all shadow-[0_0_20px_rgba(255,87,87,0.15)]">
-                                Register — ₹99 <ArrowRight className="w-3.5 h-3.5" />
+                                Register — ₹1 <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                         </div>
                     </motion.div>
