@@ -9,7 +9,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DotGrid from "@/components/ui/DotGrid";
 import { useToast } from "@/components/ui/use-toast";
-import manusIcon from "@/assets/tech-icons/manus_icon.png";
 import { supabase } from "@/lib/supabase";
 
 const loadRazorpay = () => new Promise((resolve) => {
@@ -282,7 +281,7 @@ export default function ManusWorkshop() {
                         </div>
 
                         <div className="flex items-center gap-5 mb-6">
-                            <img src={manusIcon} alt="Manus AI" className="w-14 h-14 sm:w-[68px] sm:h-[68px] mix-blend-screen grayscale contrast-200 brightness-[200%]" />
+                            <img src="https://crystalpng.com/wp-content/uploads/2025/10/Manus-ai-agent-logo.png" alt="Manus AI" className="w-14 h-14 sm:w-[68px] sm:h-[68px] object-contain" />
                             <div className="leading-none">
                                 <h1 className="text-[42px] sm:text-[60px] lg:text-[68px] font-semibold tracking-tight leading-[0.92]">MASTER</h1>
                                 <h1 className="text-[42px] sm:text-[60px] lg:text-[68px] font-semibold tracking-tight leading-[0.92] text-home-gradient">MANUS AI</h1>
