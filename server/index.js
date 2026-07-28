@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
@@ -400,6 +401,15 @@ app.delete("/api/admin/applications/:id", adminAuth, async (req, res) => {
     console.error("Delete error:", err);
     res.status(500).json({ error: "Failed to delete" });
   }
+});
+
+// ─── FRONTEND SERVING ────────────────────────────────────────────────────────
+// Serve static frontend files from the Vite build output folder (../dist)
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// Catch-all route for React Router (must be placed after all API routes)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.use((err, req, res, next) => {
