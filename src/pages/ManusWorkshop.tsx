@@ -273,12 +273,12 @@ export default function ManusWorkshop() {
                     {/* Left — Copy */}
                     <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}>
 
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.06] bg-white/[0.02] mb-10">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#ff5757]/30 bg-[#ff5757]/10 mb-10">
                             <span className="relative flex h-1.5 w-1.5">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff5757] opacity-75" />
                                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#ff5757]" />
                             </span>
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">Live Workshop</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#ff5757]">Live Workshop</span>
                         </div>
 
                         <div className="flex items-center gap-5 mb-6">
@@ -333,7 +333,7 @@ export default function ManusWorkshop() {
                     {/* Right — Form */}
                     <motion.div ref={formRef} id="register" initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.12, ease: [0.25, 0.1, 0.25, 1] }} className="relative">
                         <div className="absolute -inset-px rounded-[24px] bg-gradient-to-b from-white/[0.07] to-transparent pointer-events-none" />
-                        <div className="relative bg-white/[0.025] backdrop-blur-lg rounded-[24px] border border-white/[0.06] p-8 sm:p-10">
+                        <div className="relative bg-white rounded-[24px] border border-black/[0.06] shadow-[0_20px_40px_rgba(0,0,0,0.2)] p-8 sm:p-10">
                             <AnimatePresence mode="wait">
                                 {!showSuccess ? (
                                     <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -341,37 +341,37 @@ export default function ManusWorkshop() {
                                         {/* Price */}
                                         <div className="text-center mb-10">
                                             <div className="flex items-baseline justify-center gap-2.5 mb-2">
-                                                <span className="text-[20px] font-normal line-through text-white/15">₹299</span>
-                                                <span className="text-[48px] font-semibold text-white leading-none tracking-tight">₹99</span>
+                                                <span className="text-[28px] font-normal line-through text-black/30">₹299</span>
+                                                <span className="text-[48px] font-bold text-black leading-none tracking-tight">₹99</span>
                                             </div>
-                                            <p className="text-[12px] text-white/30 tracking-wide">Early-bird pricing · limited seats</p>
+                                            <p className="text-[12px] text-black/40 font-medium tracking-wide">Early-bird pricing · limited seats</p>
                                         </div>
 
                                         <form onSubmit={handleSubmit} className="space-y-5">
                                             {/* Name */}
                                             <div>
-                                                <label className="block text-[11px] font-medium text-white/30 mb-2 tracking-wide">Full name</label>
+                                                <label className="block text-[11px] font-medium text-black/50 mb-2 tracking-wide">Full name</label>
                                                 <input required name="full_name" type="text" placeholder="Your full name"
-                                                    className="w-full bg-white/[0.04] border border-white/[0.07] rounded-xl px-5 py-3.5 text-[15px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors" />
+                                                    className="w-full bg-black/[0.03] border border-black/[0.08] rounded-xl px-5 py-3.5 text-[15px] text-black placeholder:text-black/30 focus:outline-none focus:border-black/20 focus:bg-white transition-colors" />
                                             </div>
 
                                             {/* Email */}
                                             <div>
-                                                <label className="block text-[11px] font-medium text-white/30 mb-2 tracking-wide">Email address</label>
+                                                <label className="block text-[11px] font-medium text-black/50 mb-2 tracking-wide">Email address</label>
                                                 <input required name="email" type="email" placeholder="you@example.com"
-                                                    className="w-full bg-white/[0.04] border border-white/[0.07] rounded-xl px-5 py-3.5 text-[15px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors" />
+                                                    className="w-full bg-black/[0.03] border border-black/[0.08] rounded-xl px-5 py-3.5 text-[15px] text-black placeholder:text-black/30 focus:outline-none focus:border-black/20 focus:bg-white transition-colors" />
                                             </div>
 
                                             {/* Phone */}
                                             <div>
-                                                <label className="block text-[11px] font-medium text-white/30 mb-2 tracking-wide">Phone number</label>
+                                                <label className="block text-[11px] font-medium text-black/50 mb-2 tracking-wide">Phone number</label>
                                                 <input required name="phone" type="tel" placeholder="+91 98765 43210"
-                                                    className="w-full bg-white/[0.04] border border-white/[0.07] rounded-xl px-5 py-3.5 text-[15px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors" />
+                                                    className="w-full bg-black/[0.03] border border-black/[0.08] rounded-xl px-5 py-3.5 text-[15px] text-black placeholder:text-black/30 focus:outline-none focus:border-black/20 focus:bg-white transition-colors" />
                                             </div>
 
                                             {/* Persona */}
                                             <div>
-                                                <label className="block text-[11px] font-medium text-white/30 mb-3 tracking-wide">I am a</label>
+                                                <label className="block text-[11px] font-medium text-black/50 mb-3 tracking-wide">I am a</label>
                                                 <div className="grid grid-cols-3 gap-2.5">
                                                     {([
                                                         { key: "Student" as const, icon: GraduationCap, label: "Student" },
@@ -379,9 +379,9 @@ export default function ManusWorkshop() {
                                                         { key: "Business" as const, icon: Building2, label: "Business" },
                                                     ]).map(p => (
                                                         <button key={p.key} type="button" onClick={() => setPersona(p.key)}
-                                                            className={`flex flex-col items-center gap-2 py-4 rounded-xl border text-[11px] font-medium tracking-wide transition-all duration-200 ${persona === p.key
-                                                                    ? "bg-white/[0.08] border-white/20 text-white"
-                                                                    : "bg-white/[0.02] border-white/[0.06] text-white/30 hover:text-white/50 hover:border-white/[0.1]"
+                                                            className={`flex flex-col items-center gap-2 py-4 rounded-xl border text-[11px] font-bold tracking-wide transition-all duration-200 ${persona === p.key
+                                                                    ? "bg-black/[0.05] border-black/20 text-black shadow-sm"
+                                                                    : "bg-transparent border-black/[0.08] text-black/40 hover:text-black/70 hover:border-black/[0.15]"
                                                                 }`}>
                                                             <p.icon className="w-5 h-5" />
                                                             {p.label}
@@ -397,7 +397,7 @@ export default function ManusWorkshop() {
                                                 )}
                                             </button>
 
-                                            <p className="text-center text-[11px] text-white/20 mt-3 tracking-wide">
+                                            <p className="text-center text-[11px] text-black/40 mt-3 tracking-wide font-medium">
                                                 Razorpay secured · Certificate included
                                             </p>
                                         </form>
@@ -428,7 +428,7 @@ export default function ManusWorkshop() {
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.3 }}
-                                            className="text-[28px] font-bold mb-3 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70"
+                                            className="text-[28px] font-bold mb-3 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-black to-black/70"
                                         >
                                             Registration Confirmed!
                                         </motion.h2>
@@ -437,7 +437,7 @@ export default function ManusWorkshop() {
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.4 }}
-                                            className="text-[15px] text-white/60 mb-10 max-w-[320px] leading-relaxed"
+                                            className="text-[15px] text-black/60 mb-10 max-w-[320px] leading-relaxed font-medium"
                                         >
                                             Welcome to the Manus Workshop! 🎉 Join this WhatsApp group for all workshop updates, session links, and networking. 🚀
                                         </motion.p>
