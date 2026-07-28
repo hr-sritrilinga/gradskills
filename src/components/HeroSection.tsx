@@ -66,7 +66,7 @@ export default function HeroSection({ theme = "dark" }: { theme?: "dark" | "ligh
               <div className={`flex items-center gap-10 transition-colors duration-1000 ${isDark ? "text-white/80" : "text-slate-600"}`}>
                 <div className="flex flex-col items-start">
                   <span className={`text-[11px] font-semibold uppercase tracking-widest mb-1 transition-colors duration-1000 ${isDark ? "text-white/40" : "text-slate-400"}`}>Start Date</span>
-                  <span className={`text-[17px] font-bold transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>01 July 2026</span>
+                  <span className={`text-[17px] font-bold transition-colors duration-1000 ${isDark ? "text-white" : "text-slate-900"}`}>15th August 2026</span>
                 </div>
                 <div className="flex flex-col items-start">
                   <span className={`text-[11px] font-semibold uppercase tracking-widest mb-1 transition-colors duration-1000 ${isDark ? "text-white/40" : "text-slate-400"}`}>Start Time</span>
