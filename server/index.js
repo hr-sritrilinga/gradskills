@@ -424,7 +424,7 @@ process.on("unhandledRejection", (err) => {
   console.error("Unhandled Rejection:", err);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 API running on port ${PORT}`);
   console.log(`✅ Supabase Database Connected`);
 });
