@@ -55,7 +55,7 @@ const upload = multer({
 // ─── APP ───────────────────────────────────────────────────────────────────────
 const app = express();
 
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({ origin: CORS_ORIGIN }));
 app.use(express.json({ limit: "5mb" }));
 
