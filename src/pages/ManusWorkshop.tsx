@@ -229,7 +229,7 @@ export default function ManusWorkshop() {
                 theme: {
                     color: "#8c52ff"
                 },
-                callback_url: `${apiUrl}/api/payment-callback`,
+                callback_url: `${window.location.origin}/api/payment-callback`,
                 redirect: true
             };
             
