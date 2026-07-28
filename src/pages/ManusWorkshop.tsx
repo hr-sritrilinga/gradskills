@@ -253,7 +253,7 @@ export default function ManusWorkshop() {
                 </div>
                 <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[#8c52ff]/[0.05] blur-[180px] rounded-full pointer-events-none" />
 
-                <div className="relative z-10 mx-auto max-w-[1100px] px-6 pt-[160px] pb-24 lg:pb-32 grid lg:grid-cols-[1fr_420px] gap-16 lg:gap-20 items-start">
+                <div className="relative z-10 mx-auto max-w-[1100px] px-6 pt-[130px] pb-[130px] lg:pt-[140px] lg:pb-[140px] grid lg:grid-cols-[1fr_420px] gap-16 lg:gap-20 items-start">
 
                     {/* Left — Copy */}
                     <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}>
