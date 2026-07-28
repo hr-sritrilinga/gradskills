@@ -45,7 +45,7 @@ export default function ManusWorkshop() {
         if (formRef.current) observer.observe(formRef.current);
         return () => observer.disconnect();
     }, []);
-    
+
     // Check for success parameter in URL (used for Razorpay mobile UPI redirect fallback)
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -144,20 +144,20 @@ export default function ManusWorkshop() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!persona) { toast({ variant: "destructive", title: "Select your profile" }); return; }
-        
+
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData);
-        
+
         setIsSubmitting(true);
         try {
             // Use relative path in production since frontend and backend are on the same domain
             const apiUrl = import.meta.env.DEV ? "http://localhost:4000" : "";
-            
+
             const res = await loadRazorpay();
             if (!res) throw new Error("Razorpay SDK failed to load. Are you online?");
-            
+
             const { id: toastId } = toast({ title: "Opening Payment…" });
-            
+
             const orderRes = await fetch(`${apiUrl}/api/create-razorpay-order`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -165,7 +165,7 @@ export default function ManusWorkshop() {
             });
             const orderData = await orderRes.json();
             if (!orderData.success) throw new Error("Failed to create order");
-            
+
             const { data: insertData, error: insertError } = await supabase.from('manus_workshop_registrations').insert([{
                 full_name: data.full_name,
                 email: data.email,
@@ -174,13 +174,13 @@ export default function ManusWorkshop() {
                 order_id: orderData.order.id,
                 payment_status: 'pending'
             }]).select('id').single();
-            
+
             if (insertError) {
                 console.error("Supabase Error:", insertError);
                 throw new Error("Failed to initialize registration. Please try again.");
             }
             const recordId = insertData.id;
-            
+
             const options = {
                 key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_live_TIUVuNeQsIazvt",
                 amount: orderData.order.amount,
@@ -197,13 +197,13 @@ export default function ManusWorkshop() {
                                 signature: response.razorpay_signature
                             })
                             .eq('id', recordId);
-                        
+
                         if (error) {
                             console.error("Supabase Error:", error);
                             toast({ variant: "destructive", title: "Payment verified but failed to save details." });
                             return;
                         }
-                        
+
                         dismiss(toastId);
                         setRegistrationId(recordId);
                         setShowSuccess(true);
@@ -213,7 +213,7 @@ export default function ManusWorkshop() {
                     }
                 },
                 modal: {
-                    ondismiss: async function() {
+                    ondismiss: async function () {
                         await supabase.from('manus_workshop_registrations')
                             .update({ payment_status: 'failed' })
                             .eq('id', recordId);
@@ -230,20 +230,20 @@ export default function ManusWorkshop() {
                     color: "#8c52ff"
                 }
             };
-            
+
             const paymentObject = new (window as any).Razorpay(options);
             paymentObject.on('payment.failed', async function (response: any) {
                 await supabase.from('manus_workshop_registrations')
-                    .update({ 
+                    .update({
                         payment_status: 'failed',
-                        payment_id: response.error.metadata.payment_id 
+                        payment_id: response.error.metadata.payment_id
                     })
                     .eq('id', recordId);
             });
             paymentObject.open();
-            
-        } catch (err: any) { 
-            toast({ variant: "destructive", title: err.message || "Failed to process payment" }); 
+
+        } catch (err: any) {
+            toast({ variant: "destructive", title: err.message || "Failed to process payment" });
             setIsSubmitting(false);
         }
         // Notice: No finally block here, because ondismiss handles the cleanup if user closes modal.
@@ -259,7 +259,7 @@ export default function ManusWorkshop() {
 
     return (
         <div className="min-h-screen bg-[#030712] text-white selection:bg-[#8c52ff]/30 font-['Fira_Sans']">
-            <Navbar theme={theme} onThemeChange={() => {}} simple />
+            <Navbar theme={theme} onThemeChange={() => { }} simple />
 
             {/* ═══ HERO ═══ */}
             <section className="relative w-full overflow-hidden">
@@ -379,11 +379,10 @@ export default function ManusWorkshop() {
                                                         { key: "Business" as const, icon: Building2, label: "Business" },
                                                     ]).map(p => (
                                                         <button key={p.key} type="button" onClick={() => setPersona(p.key)}
-                                                            className={`flex flex-col items-center gap-2 py-4 rounded-xl border text-[11px] font-medium tracking-wide transition-all duration-200 ${
-                                                                persona === p.key
+                                                            className={`flex flex-col items-center gap-2 py-4 rounded-xl border text-[11px] font-medium tracking-wide transition-all duration-200 ${persona === p.key
                                                                     ? "bg-white/[0.08] border-white/20 text-white"
                                                                     : "bg-white/[0.02] border-white/[0.06] text-white/30 hover:text-white/50 hover:border-white/[0.1]"
-                                                            }`}>
+                                                                }`}>
                                                             <p.icon className="w-5 h-5" />
                                                             {p.label}
                                                         </button>
@@ -394,7 +393,7 @@ export default function ManusWorkshop() {
                                             {/* CTA */}
                                             <button disabled={isSubmitting} className="w-full bg-home-gradient text-white py-4 rounded-xl font-semibold text-[15px] flex items-center justify-center gap-2 hover:opacity-90 transition-all disabled:opacity-50">
                                                 {isSubmitting ? "Processing…" : (
-                                                    <>Register Now — ₹99 <ArrowRight className="w-4 h-4" /></>
+                                                    <>Register Now - ₹99 <ArrowRight className="w-4 h-4" /></>
                                                 )}
                                             </button>
 
@@ -404,16 +403,16 @@ export default function ManusWorkshop() {
                                         </form>
                                     </motion.div>
                                 ) : (
-                                    <motion.div 
-                                        key="success" 
-                                        initial={{ opacity: 0, scale: 0.9, y: 20 }} 
-                                        animate={{ opacity: 1, scale: 1, y: 0 }} 
+                                    <motion.div
+                                        key="success"
+                                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                        animate={{ opacity: 1, scale: 1, y: 0 }}
                                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
                                         className="flex flex-col items-center text-center py-10 px-4 relative"
                                     >
                                         <div className="absolute inset-0 bg-[#8c52ff]/10 blur-[100px] rounded-full" />
-                                        
-                                        <motion.div 
+
+                                        <motion.div
                                             initial={{ scale: 0, rotate: -45 }}
                                             animate={{ scale: 1, rotate: 0 }}
                                             transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 20 }}
@@ -424,8 +423,8 @@ export default function ManusWorkshop() {
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                             </svg>
                                         </motion.div>
-                                        
-                                        <motion.h2 
+
+                                        <motion.h2
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.3 }}
@@ -433,8 +432,8 @@ export default function ManusWorkshop() {
                                         >
                                             Registration Confirmed!
                                         </motion.h2>
-                                        
-                                        <motion.p 
+
+                                        <motion.p
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.4 }}
@@ -442,7 +441,7 @@ export default function ManusWorkshop() {
                                         >
                                             Welcome to the Manus Workshop! 🎉 Join this WhatsApp group for all workshop updates, session links, and networking. 🚀
                                         </motion.p>
-                                        
+
                                         <motion.div
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
@@ -450,19 +449,19 @@ export default function ManusWorkshop() {
                                             className="w-full relative group"
                                         >
                                             <div className="absolute -inset-1 bg-gradient-to-r from-[#25D366] to-[#128C7E] rounded-xl blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
-                                            <a 
-                                                href="https://chat.whatsapp.com/IEkzJZKQWol0cAdYfylTXW?s=cl&p=a&ilr=1&amv=0" 
-                                                target="_blank" 
-                                                rel="noreferrer" 
+                                            <a
+                                                href="https://chat.whatsapp.com/IEkzJZKQWol0cAdYfylTXW?s=cl&p=a&ilr=1&amv=0"
+                                                target="_blank"
+                                                rel="noreferrer"
                                                 onClick={async () => {
                                                     if (registrationId) {
                                                         await supabase.from('manus_workshop_registrations').update({ whatsapp_joined: true }).eq('id', registrationId);
                                                     }
-                                                }} 
+                                                }}
                                                 className="relative w-full bg-[#1e2330] border border-white/10 text-white py-4 rounded-xl font-semibold text-[15px] flex items-center justify-center gap-3 hover:bg-[#25D366] hover:border-[#25D366] transition-all duration-300 shadow-xl overflow-hidden"
                                             >
                                                 <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current text-white drop-shadow-md group-hover:animate-bounce" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.81 11.81 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/>
+                                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.81 11.81 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z" />
                                                 </svg>
                                                 <span className="text-[16px] font-bold tracking-wide">Join WhatsApp Group</span>
                                                 <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out" />
