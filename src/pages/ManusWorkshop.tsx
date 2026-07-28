@@ -338,35 +338,37 @@ export default function ManusWorkshop() {
                                 {!showSuccess ? (
                                     <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
 
+                                        <h3 className="text-[26px] font-bold text-slate-900 text-center mb-6 tracking-tight">Register Now</h3>
+
                                         {/* Price */}
-                                        <div className="text-center mb-10">
+                                        <div className="text-center mb-8">
                                             <div className="flex items-baseline justify-center gap-2.5 mb-2">
-                                                <span className="text-[28px] font-normal line-through text-black/30">₹299</span>
+                                                <span className="text-[28px] font-normal line-through text-slate-400">₹299</span>
                                                 <span className="text-[48px] font-bold text-home-gradient leading-none tracking-tight">₹99</span>
                                             </div>
-                                            <p className="text-[12px] text-black/40 font-medium tracking-wide">Early-bird pricing · limited seats</p>
+                                            <p className="text-[13px] text-slate-500 font-medium tracking-wide">Early-bird pricing · limited seats</p>
                                         </div>
 
                                         <form onSubmit={handleSubmit} className="space-y-5">
                                             {/* Name */}
                                             <div>
-                                                <label className="block text-[11px] font-medium text-black/50 mb-2 tracking-wide">Full name</label>
+                                                <label className="block text-[12px] font-semibold text-slate-700 mb-2 tracking-wide">Full name</label>
                                                 <input required name="full_name" type="text" placeholder="Your full name"
-                                                    className="w-full bg-black/[0.03] border border-black/[0.08] rounded-xl px-5 py-3.5 text-[15px] text-black placeholder:text-black/30 focus:outline-none focus:border-black/20 focus:bg-white transition-colors" />
+                                                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-[15px] text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-slate-300 focus:bg-white transition-colors shadow-sm" />
                                             </div>
 
                                             {/* Email */}
                                             <div>
-                                                <label className="block text-[11px] font-medium text-black/50 mb-2 tracking-wide">Email address</label>
+                                                <label className="block text-[12px] font-semibold text-slate-700 mb-2 tracking-wide">Email address</label>
                                                 <input required name="email" type="email" placeholder="you@example.com"
-                                                    className="w-full bg-black/[0.03] border border-black/[0.08] rounded-xl px-5 py-3.5 text-[15px] text-black placeholder:text-black/30 focus:outline-none focus:border-black/20 focus:bg-white transition-colors" />
+                                                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-[15px] text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-slate-300 focus:bg-white transition-colors shadow-sm" />
                                             </div>
 
                                             {/* Phone */}
                                             <div>
-                                                <label className="block text-[11px] font-medium text-black/50 mb-2 tracking-wide">Phone number</label>
+                                                <label className="block text-[12px] font-semibold text-slate-700 mb-2 tracking-wide">Phone number</label>
                                                 <input required name="phone" type="tel" placeholder="+91 98765 43210"
-                                                    className="w-full bg-black/[0.03] border border-black/[0.08] rounded-xl px-5 py-3.5 text-[15px] text-black placeholder:text-black/30 focus:outline-none focus:border-black/20 focus:bg-white transition-colors" />
+                                                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-[15px] text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-slate-300 focus:bg-white transition-colors shadow-sm" />
                                             </div>
 
                                             {/* Persona */}
